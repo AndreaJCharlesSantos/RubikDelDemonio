@@ -4,7 +4,7 @@ import java.util.*;
 public class Juego{
 	
 	public Scanner teclado=new Scanner(System.in);
-	public char [][][]Cubo=new char [6][3][3];
+	public char [][][]cubo=new char [6][3][3];
 	public char [][][]Resuelto=new char [6][3][3];
 	public char [][][]movimiento=new char [6][3][3];
 	public int colores[]=new int[6];
@@ -47,7 +47,7 @@ public class Juego{
 			for(int j=0;j<3;j++){
 				for(int k=0;k<3;k++){
 					if(j==1&&k==1){
-						Cubo[i][j][k]=Resuelto[i][j][k];
+						cubo[i][j][k]=Resuelto[i][j][k];
 					}else{
 						do{
 							toco=color.nextInt(6);
@@ -65,7 +65,7 @@ public class Juego{
 						}else if(toco==5){
 							letra='Y';
 						}
-						Cubo[i][j][k]=letra;
+						cubo[i][j][k]=letra;
 						colores[toco]=colores[toco]-1;
 					}
 				}
@@ -95,7 +95,7 @@ public class Juego{
 						cara=cara3;
 					}
 					for(int k=0;k<3;k++){
-						System.out.print(Cubo[cara][j][k]);
+						System.out.print(cubo[cara][j][k]);
 						if(k<2){
 							System.out.print(",");
 						}
@@ -113,7 +113,7 @@ public class Juego{
 		//cara naranja 1
 		for(int j=0;j<3;j++){
 			for(int k=0;k<3;k++){
-				System.out.print(Cubo[1][j][k]);
+				System.out.print(cubo[1][j][k]);
 				if(k<2){
 					System.out.print(",");
 				}
@@ -126,7 +126,7 @@ public class Juego{
 		//cara roja 4
 		for(int j=0;j<3;j++){
 			for(int k=0;k<3;k++){
-				System.out.print(Cubo[4][j][k]);
+				System.out.print(cubo[4][j][k]);
 				if(k<2){
 					System.out.print(",");
 				}
@@ -182,28 +182,122 @@ public class Juego{
 
 	public void movimientosuperior(){
 		//superior 1
-		
+		int a=0,b=3;
+		for(int j=0;j<3;j++){
+			for(int k=0;k<3;k++){
+				b=b-1;
+				System.out.println(b+","+a);
+				movimiento[1][j][k]=cubo[1][b][a];
+			}
+			a=a+1;
+			b=3;
+		}
+		for(int j=0;j<3;j++){
+			for(int k=0;k<3;k++){
+				cubo[1][j][k]=movimiento[1][j][k];
+			}
+		}
+		imprimir();
 	}
 
 	public void movimientoinferiro(){
 		//inferior 4
-
+		int a=0,b=3;
+		for(int j=0;j<3;j++){
+			for(int k=0;k<3;k++){
+				b=b-1;
+				System.out.println(b+","+a);
+				movimiento[4][j][k]=cubo[4][b][a];
+			}
+			a=a+1;
+			b=3;
+		}
+		for(int j=0;j<3;j++){
+			for(int k=0;k<3;k++){
+				cubo[4][j][k]=movimiento[4][j][k];
+			}
+		}
+		imprimir();
 	}
 
 	public void movimientoizquierda(){
-		
+		//izquierda 2
+		int a=0,b=3;
+		for(int j=0;j<3;j++){
+			for(int k=0;k<3;k++){
+				b=b-1;
+				System.out.println(b+","+a);
+				movimiento[2][j][k]=cubo[2][b][a];
+			}
+			a=a+1;
+			b=3;
+		}
+		for(int j=0;j<3;j++){
+			for(int k=0;k<3;k++){
+				cubo[2][j][k]=movimiento[2][j][k];
+			}
+		}
+		imprimir();
 	}
 
 	public void movimientoderecha(){
-		
+		//derecha 3
+		int a=0,b=3;
+		for(int j=0;j<3;j++){
+			for(int k=0;k<3;k++){
+				b=b-1;
+				System.out.println(b+","+a);
+				movimiento[3][j][k]=cubo[3][b][a];
+			}
+			a=a+1;
+			b=3;
+		}
+		for(int j=0;j<3;j++){
+			for(int k=0;k<3;k++){
+				cubo[3][j][k]=movimiento[3][j][k];
+			}
+		}
+		imprimir();
 	}
 
 	public void movimientofrente(){
-
+		//frontal 0
+		int a=0,b=3;
+		for(int j=0;j<3;j++){
+			for(int k=0;k<3;k++){
+				b=b-1;
+				System.out.println(b+","+a);
+				movimiento[0][j][k]=cubo[0][b][a];
+			}
+			a=a+1;
+			b=3;
+		}
+		for(int j=0;j<3;j++){
+			for(int k=0;k<3;k++){
+				cubo[0][j][k]=movimiento[0][j][k];
+			}
+		}
+		imprimir();
 	}
 
 	public void movimientoposterior(){
-			
+		//posterior 5
+		int a=0,b=3;
+		for(int j=0;j<3;j++){
+			for(int k=0;k<3;k++){
+				b=b-1;
+				System.out.println(b+","+a);
+				movimiento[5][j][k]=cubo[5][b][a];
+			}
+			a=a+1;
+			b=3;
+		}
+		for(int j=0;j<3;j++){
+			for(int k=0;k<3;k++){
+				cubo[5][j][k]=movimiento[5][j][k];
+			}
+		}
+		imprimir();
 	}
 
 	public void ganador(){
@@ -212,7 +306,7 @@ public class Juego{
 			for(int j=0;j<3;j++){
 				for(int k=0;k<3;k++){
 					if(contador==2){
-						if(Cubo[i][j][k]==Resuelto[i][j][k]){
+						if(cubo[i][j][k]==Resuelto[i][j][k]){
 							contador2=1;
 						}else{
 							contador2=0;
@@ -233,7 +327,7 @@ public class Juego{
 		for(int i=0;i<6;i++){
 			for(int j=0;j<3;j++){
 				for(int k=0;k<3;k++){
-					Cubo[i][j][k]=Resuelto[i][j][k];
+					cubo[i][j][k]=Resuelto[i][j][k];
 				}
 			}
 		}
