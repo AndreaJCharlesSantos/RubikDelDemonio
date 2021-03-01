@@ -9,12 +9,11 @@ package rubik;
  *
  * @author PC JORGE
  */
-public class Cubo {
-	public char color[];
-	public char orientacion[];
-
-	public Cubo(int numeroTuplas){
-		color=new char[numeroTuplas];
-		orientacion=new char[numeroTuplas];
+public class Rubick{
+	
+	public static void main(String args[]){
+		Piezas piezas=new Piezas();
+		piezas.iniciar();
+		piezas.imprimir();
 	}
 }

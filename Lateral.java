@@ -9,12 +9,10 @@ package rubik;
  *
  * @author PC JORGE
  */
-public class Cubo {
-	public char color[];
-	public char orientacion[];
+public class Lateral{
+	public Cubo cubo;
 
-	public Cubo(int numeroTuplas){
-		color=new char[numeroTuplas];
-		orientacion=new char[numeroTuplas];
+	public Lateral(){
+		cubo=new Cubo(2);
 	}
 }
